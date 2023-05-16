@@ -9,4 +9,5 @@ type Session struct {
 	Cookies        *Cookies        `json:"cookies"`
 	LocalStorage   *LocalStorage   `json:"localStorage"`
 	SessionStorage *SessionStorage `json:"sessionStorage"`
+	HTML           string          `json:"html"`
 }
