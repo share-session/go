@@ -5,7 +5,7 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
-func Create(session CreateSession) (Session, error) {
+func Create(session *Session) (*Session, error) {
 	client := resty.New().SetBaseURL("https://functions.share-session.com/api")
 
 	var response Session
@@ -18,13 +18,13 @@ func Create(session CreateSession) (Session, error) {
 		Post("s")
 
 	if err != nil {
-		return response, err
+		return nil, err
 	}
 
-	return response, nil
+	return &response, nil
 }
 
-func Get(id string) (Session, error) {
+func Get(id string) (*Session, error) {
 	client := resty.New().SetBaseURL("https://functions.share-session.com/api")
 
 	var response Session
@@ -36,8 +36,8 @@ func Get(id string) (Session, error) {
 		Get(fmt.Sprintf("s/%s", id))
 
 	if err != nil {
-		return response, err
+		return nil, err
 	}
 
-	return response, nil
+	return &response, nil
 }
