@@ -61,14 +61,14 @@ func (session *Session) SetCookies(cookies map[string]Cookie) *Session {
 }
 
 func (session *Session) SetHttpCookie(cookie *http.Cookie) *Session {
-	session.Cookies[cookie.Name] = Cookie{
+	session.SetCookie(cookie.Name, Cookie{
 		Name:     cookie.Name,
 		Value:    cookie.Value,
 		Domain:   cookie.Domain,
 		Path:     cookie.Path,
 		Secure:   cookie.Secure,
 		HttpOnly: cookie.HttpOnly,
-	}
+	})
 
 	return session
 }
